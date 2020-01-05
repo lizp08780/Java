@@ -122,15 +122,12 @@ public class BinaryTree {
             return null;
         }
         String d = data.pop();
-        Node node = new Node<>(d);
-        if (d == null) {
+        if (d == null || d.equals("#")) {
             return null;
         }
+        Node node = new Node<>(d);
         if (index == 0) {
             root = node;
-        }
-        if (d.equals("#")) {
-            return null;
         }
         node.leftChildTree = creatBinaryTree(++index, data);
         node.rightChildTree = creatBinaryTree(++index, data);
