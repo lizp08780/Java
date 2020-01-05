@@ -1,3 +1,5 @@
+import tree.BinaryTree;
+
 import java.util.LinkedList;
 
 public class Main {
@@ -23,13 +25,30 @@ public class Main {
         System.err.println(binaryTree.getSize());
         binaryTree.nonRecOrder();*/
 
-        LinkedList l = new LinkedList();
+/*        LinkedList l = new LinkedList();
         String[] data = new String[]{"A", "B", "D", "#", "#", "#", "C", "E", "#", "F"};
         for (String d : data) {
             l.offer(d);
         }
         BinaryTree tree = new BinaryTree();
         tree.creatBinaryTree(l);
-        tree.preOrder();
+        tree.preOrder();*/
+
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.put(1);
+        binaryTree.put(3);
+        binaryTree.put(6);
+        binaryTree.put(7);
+        binaryTree.put(4);
+        binaryTree.put(5);
+        binaryTree.put(2);
+
+        binaryTree.preOrder();
+        System.err.println("==========");
+        BinaryTree.preOrder(binaryTree.getNodeByData(6));
+        System.err.println("==========");
+        binaryTree.delete(6);
+        System.err.println("==========");
+        binaryTree.preOrder();
     }
 }

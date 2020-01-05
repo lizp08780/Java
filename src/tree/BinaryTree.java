@@ -1,9 +1,10 @@
+package tree;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
-/**
- * 二叉树
- */
 public class BinaryTree {
 
     private Node root;
@@ -42,9 +43,9 @@ public class BinaryTree {
 
     //得到树的深度
     public static Integer getHeight(Node node) {
-        if (node == null)
+        if (node == null) {
             return 0;
-        else {
+        } else {
             int left = getHeight(node.getLeftChildTree());
             int right = getHeight(node.getRightChildTree());
             //左子树 右子树最深的，再加上父节点本身深度1
@@ -54,9 +55,9 @@ public class BinaryTree {
 
     //得到节点数量
     public static Integer getSize(Node node) {
-        if (node == null)
+        if (node == null) {
             return 0;
-        else {
+        } else {
             int leftSize = getSize(node.getLeftChildTree());
             int rightSize = getSize(node.getRightChildTree());
             return leftSize + rightSize + 1;
@@ -65,9 +66,9 @@ public class BinaryTree {
 
     //前序遍历,迭代
     public static void preOrder(Node node) {
-        if (node == null)
+        if (node == null) {
             return;
-        else {
+        } else {
             System.out.println("preOrder" + node.getData());
             preOrder(node.getLeftChildTree());
             preOrder(node.getRightChildTree());
@@ -76,9 +77,9 @@ public class BinaryTree {
 
     //中序遍历,迭代
     public static void midOrder(Node node) {
-        if (node == null)
+        if (node == null) {
             return;
-        else {
+        } else {
             midOrder(node.getLeftChildTree());
             System.out.println("midOrder" + node.getData());
             midOrder(node.getRightChildTree());
@@ -87,9 +88,9 @@ public class BinaryTree {
 
     //后序遍历,迭代
     public static void proOrder(Node node) {
-        if (node == null)
+        if (node == null) {
             return;
-        else {
+        } else {
             proOrder(node.getLeftChildTree());
             proOrder(node.getRightChildTree());
             System.out.println("proOrder" + node.getData());
@@ -98,8 +99,9 @@ public class BinaryTree {
 
     //前序遍历，非迭代
     public static void nonRecOrder(Node node) {
-        if (node == null)
+        if (node == null) {
             return;
+        }
         Stack<Node> stack = new Stack<>();
         stack.push(node);
         while (!stack.isEmpty()) {
@@ -129,53 +131,92 @@ public class BinaryTree {
         if (index == 0) {
             root = node;
         }
-        node.leftChildTree = creatBinaryTree(++index, data);
-        node.rightChildTree = creatBinaryTree(++index, data);
+        node.setLeftChildTree(creatBinaryTree(++index, data));
+        node.setRightChildTree(creatBinaryTree(++index, data));
         return node;
     }
 
-    static class Node<T> {
-        private Integer index;
-        private Node leftChildTree;
-        private Node rightChildTree;
-        private T data;
 
-        public Integer getIndex() {
-            return index;
+    public Node<Integer> put(Integer data) {
+        if (data == null) {
+            return null;
         }
+        if (root == null) {
+            root = new Node<>(data);
+            return root;
+        }
+        Node<Integer> node = root;
+        Node<Integer> parent = null;
+        while (node != null) {
+            parent = node;
+            if (node.getData() > data) {
+                node = node.getLeftChildTree();
+            } else if (node.getData() < data) {
+                node = node.getRightChildTree();
+            } else {
+                return node;
+            }
+        }
+        node = new Node<>(data);
+        node.setParent(parent);
+        if (parent.getData() > data) {
+            parent.setLeftChildTree(node);
+        } else {
+            parent.setRightChildTree(node);
+        }
+        return node;
+    }
 
-        public void setIndex(Integer index) {
-            this.index = index;
+    public Node getNodeByData(Integer data) {
+        if (data == null || root == null) {
+            return null;
         }
+        Node<Integer> node = root;
+        while (node != null) {
+            if (node.getData().equals(data)) {
+                return node;
+            } else if (node.getData() > data) {
+                node = node.getLeftChildTree();
+            } else {
+                node = node.getRightChildTree();
+            }
+        }
+        return null;
+    }
 
-        public Node getLeftChildTree() {
-            return leftChildTree;
+    public Integer delete(Integer data) {
+        Node node = getNodeByData(data);
+        if (node == null) {
+            return null;
         }
+        List<Integer> list = new ArrayList<>();
+        Node parent = node.getParent();
+        //要删除节点的父节点 关系中断
+        if (parent.getLeftChildTree() == node) {
+            parent.setLeftChildTree(null);
+        } else {
+            parent.setRightChildTree(null);
+        }
+        getDataPreOrder(list, node);
+        list.remove(data);
+        //把数据重新放一次
+        for (Integer i : list) {
+            put(i);
+        }
+        return data;
+    }
 
-        public void setLeftChildTree(Node leftChildTree) {
-            this.leftChildTree = leftChildTree;
+    //找到某节点下的所有数据放在list，旧节点属性置空
+    private void getDataPreOrder(List list, Node node) {
+        if (node == null) {
+            return;
         }
-
-        public Node getRightChildTree() {
-            return rightChildTree;
-        }
-
-        public void setRightChildTree(Node rightChildTree) {
-            this.rightChildTree = rightChildTree;
-        }
-
-        public T getData() {
-            return data;
-        }
-
-        public void setData(T data) {
-            this.data = data;
-        }
-
-        public Node(T data) {
-            this.data = data;
-            this.leftChildTree = null;
-            this.rightChildTree = null;
-        }
+        node.setParent(null);
+        list.add(node.getData());
+        getDataPreOrder(list, node.getLeftChildTree());
+        node.setLeftChildTree(null);
+        getDataPreOrder(list, node.getRightChildTree());
+        node.setRightChildTree(null);
+        node.setData(null);
     }
 }
