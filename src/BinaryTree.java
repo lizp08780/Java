@@ -6,16 +6,27 @@ public class BinaryTree {
         this.root = root;
     }
 
-    //得到树的深度
     public Integer getHeight() {
         return getHeight(root);
     }
 
-    //得到节点数量
     public Integer getSize() {
         return getSize(root);
     }
 
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    public void midOrder() {
+        midOrder(root);
+    }
+
+    public void proOrder() {
+        proOrder(root);
+    }
+
+    //得到树的深度
     public static Integer getHeight(Node node) {
         if (node == null)
             return 0;
@@ -27,6 +38,7 @@ public class BinaryTree {
         }
     }
 
+    //得到节点数量
     public static Integer getSize(Node node) {
         if (node == null)
             return 0;

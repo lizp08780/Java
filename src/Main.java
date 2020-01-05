@@ -14,8 +14,10 @@ public class Main {
         root.setLeftChildTree(nodeB);
         root.setRightChildTree(nodeC);
         BinaryTree binaryTree = new BinaryTree(root);
-        binaryTree.preOrder(root);
-        binaryTree.midOrder(root);
-        binaryTree.proOrder(root);
+        binaryTree.preOrder();
+        binaryTree.midOrder();
+        binaryTree.proOrder();
+        System.err.println(binaryTree.getHeight());
+        System.err.println(binaryTree.getSize());
     }
 }
