@@ -1,8 +1,10 @@
+import java.util.LinkedList;
+
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        BinaryTree.Node nodeB = new BinaryTree.Node("B");
+/*        BinaryTree.Node nodeB = new BinaryTree.Node("B");
         BinaryTree.Node nodeC = new BinaryTree.Node("C");
         BinaryTree.Node nodeD = new BinaryTree.Node("D");
         BinaryTree.Node nodeE = new BinaryTree.Node("E");
@@ -19,5 +21,15 @@ public class Main {
         binaryTree.proOrder();
         System.err.println(binaryTree.getHeight());
         System.err.println(binaryTree.getSize());
+        binaryTree.nonRecOrder();*/
+
+        LinkedList l = new LinkedList();
+        String[] data = new String[]{"A", "B", "D", "#", "#", "#", "C", "E", "#", "F"};
+        for (String d : data) {
+            l.offer(d);
+        }
+        BinaryTree tree = new BinaryTree();
+        tree.creatBinaryTree(l);
+        tree.preOrder();
     }
 }
