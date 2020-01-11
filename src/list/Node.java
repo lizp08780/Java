@@ -29,4 +29,15 @@ public class Node<T> {
     public void setNext(Node<T> next) {
         this.next = next;
     }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        Node cur = this;
+        while (cur != null) {
+            sb.append(cur.getData() + "->");
+            cur = cur.getNext();
+        }
+        return sb.toString();
+    }
 }

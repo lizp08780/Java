@@ -126,13 +126,24 @@ public class Linked<T> {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
-        Node cur = this.head;
-        while (cur != null) {
-            sb.append(cur.getData() + "->");
-            cur = cur.getNext();
+        return this.head.toString();
+    }
+
+    public static <T> Node<T> reverse(Node<T> node) {
+        if (node == null) {
+            return null;
         }
-        return sb.toString();
+        Node<T> result = new Node(null);
+        result.setNext(node);
+        Node<T> p = node;
+        Node<T> pNext = p.getNext();
+        while (pNext != null) {
+            p.setNext(pNext.getNext());
+            pNext.setNext(result.getNext());
+            result.setNext(pNext);
+            pNext = p.getNext();
+        }
+        return result.getNext();
     }
 
     public static void main(String[] args) {
@@ -142,7 +153,8 @@ public class Linked<T> {
             System.out.println(linked);
         }
         System.err.println("=====");
-        linked.addLast(33);
+        System.err.println("==反转==" + Linked.reverse(linked.head));
+/*        linked.addLast(33);
         linked.addFirst(33);
         linked.add(33, 5);
         System.out.println(linked);
@@ -151,6 +163,6 @@ public class Linked<T> {
         System.out.println("删除第一个元素：" + linked.removeFirst());
         System.out.println(linked);
         System.out.println("删除最后一个元素：" + linked.removeLast());
-        System.out.println(linked);
+        System.out.println(linked);*/
     }
 }
