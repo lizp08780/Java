@@ -79,9 +79,30 @@ public class Node<T> {
         return root;
     }
 
+    //是否是子树
+    public static <T> boolean hasSubtree(Node<T> root, Node<T> sub) {
+        if (root == null || sub == null) {
+            return false;
+        }
+        return isSubtree(root, sub) || hasSubtree(root.leftChildTree, sub) || hasSubtree(root.rightChildTree, sub);
+    }
+
+    private static <T> boolean isSubtree(Node<T> root, Node<T> sub) {
+        if (sub == null) {
+            return true;
+        }
+        if (root == null) {
+            return false;
+        }
+        if (root.data.equals(sub.data)) {
+            return isSubtree(root.leftChildTree, sub.leftChildTree) && isSubtree(root.rightChildTree, sub.rightChildTree);
+        }
+        return false;
+    }
+
     private static <T> int find(T[] array, T v) {
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == v) {
+            if (array[i].equals(v)) {
                 return i;
             }
         }
