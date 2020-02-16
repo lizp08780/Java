@@ -1,4 +1,4 @@
-package com.lizp;
+package com.lizp.stack;
 
 import java.util.Stack;
 
