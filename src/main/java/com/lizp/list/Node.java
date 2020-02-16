@@ -1,4 +1,4 @@
-package list;
+package com.lizp.list;
 
 public class Node<T> {
     private T data;

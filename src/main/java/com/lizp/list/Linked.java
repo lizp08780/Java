@@ -1,4 +1,4 @@
-package list;
+package com.lizp.list;
 
 public class Linked<T> {
     private Node<T> head;            //头结点

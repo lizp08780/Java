@@ -1,4 +1,4 @@
-package tree;
+package com.lizp.tree;
 
 import java.util.Arrays;
 

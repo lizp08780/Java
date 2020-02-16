@@ -1,6 +1,6 @@
-import tree.BinaryTree;
+package com.lizp;
 
-import java.util.LinkedList;
+import com.lizp.tree.BinaryTree;
 
 public class Main {
 
@@ -30,9 +30,9 @@ public class Main {
         for (String d : data) {
             l.offer(d);
         }
-        BinaryTree tree = new BinaryTree();
-        tree.creatBinaryTree(l);
-        tree.preOrder();*/
+        BinaryTree com.lizp.tree = new BinaryTree();
+        com.lizp.tree.creatBinaryTree(l);
+        com.lizp.tree.preOrder();*/
 
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.put(1);
