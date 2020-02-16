@@ -1,9 +1,6 @@
 package com.lizp.tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
 
@@ -218,5 +215,30 @@ public class BinaryTree {
         getDataPreOrder(list, node.getRightChildTree());
         node.setRightChildTree(null);
         node.setData(null);
+    }
+
+    /**
+     * 从上往下打印出二叉树的每个节点，同层节点从左至右打印。
+     *
+     * @param root
+     * @return
+     */
+    public static List<Integer> printFromTopToBottom(Node<Integer> root) {
+        Queue<Node<Integer>> queue = new LinkedList<>();
+        List<Integer> ret = new ArrayList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int cnt = queue.size();
+            while (cnt-- > 0) {
+                Node<Integer> t = queue.poll();
+                if (t == null) {
+                    continue;
+                }
+                ret.add(t.getData());
+                queue.add(t.getLeftChildTree());
+                queue.add(t.getRightChildTree());
+            }
+        }
+        return ret;
     }
 }
