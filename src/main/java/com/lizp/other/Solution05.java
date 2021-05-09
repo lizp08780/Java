@@ -2,6 +2,9 @@ package com.lizp.other;
 
 import java.util.concurrent.Semaphore;
 
+/**
+ * 三个线程交替顺序打印ABC
+ */
 public class Solution05 {
     // 以A开始的信号量,初始信号量数量为1
     private static Semaphore A = new Semaphore(1);

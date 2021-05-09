@@ -3,6 +3,9 @@ package com.lizp.other;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 三个线程交替顺序打印ABC
+ */
 public class Solution04 {
     private static int count = 0;
 
