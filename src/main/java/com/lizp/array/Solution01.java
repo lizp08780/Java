@@ -1,7 +1,7 @@
-package com.lizp.other;
+package com.lizp.array;
 
 /**
- * s顺时针旋转矩阵
+ * 顺时针旋转矩阵
  */
 public class Solution01 {
     public static void main(String[] args) {

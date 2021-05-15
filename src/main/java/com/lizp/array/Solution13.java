@@ -1,4 +1,4 @@
-package com.lizp.other;
+package com.lizp.array;
 
 import java.util.HashMap;
 import java.util.Map;
