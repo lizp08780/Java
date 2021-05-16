@@ -1,6 +1,8 @@
 package com.lizp.string;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -23,6 +25,24 @@ public class Solution3 {
                 }
             }
             max = Math.max(max, set.size());
+        }
+        return max;
+    }
+
+    public int lengthOfLongestSubstring2(String s) {
+        if (s == null || s.isEmpty()) {
+            return 0;
+        }
+        int n = s.length();
+        int max = 1;
+        int begin = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            if (map.containsKey(s.charAt(i))) {
+                begin = Math.max(map.get(s.charAt(i)), begin);
+            }
+            max = Math.max(max, i - begin + 1);
+            map.put(s.charAt(i), i + 1);
         }
         return max;
     }
