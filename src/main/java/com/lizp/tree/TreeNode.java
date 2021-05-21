@@ -2,6 +2,16 @@ package com.lizp.tree;
 
 public class TreeNode {
     int val = 0;
-    TreeNode left = null;
-    TreeNode right = null;
+    TreeNode left;
+    TreeNode right;
+
+    public TreeNode(int val) {
+        this.val = val;
+    }
+
+    public TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
 }
