@@ -46,4 +46,30 @@ public class Solution3 {
         }
         return max;
     }
+
+    /**
+     * 最长无重复元素子数组的长度
+     *
+     * @param arr
+     * @return
+     */
+    public int maxLength(int[] arr) {
+        if (arr == null || arr.length < 1) {
+            return 0;
+        }
+        int size = arr.length;
+        int max = 1;
+        for (int i = 0; i < size; i++) {
+            Set<Integer> set = new HashSet<>();
+            for (int j = i; j < size; j++) {
+                if (set.contains(arr[j])) {
+                    break;
+                } else {
+                    set.add(arr[j]);
+                }
+            }
+            max = Math.max(max, set.size());
+        }
+        return max;
+    }
 }

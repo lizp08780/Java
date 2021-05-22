@@ -19,7 +19,6 @@ public class Solution3 {
         TreeNode temp = root.left;
         root.left = invertTree(root.right);
         root.right = invertTree(temp);
-
         return root;
     }
 
@@ -59,6 +58,6 @@ public class Solution3 {
         invertTree2(node0);
 
         //System.err.println(Solution.levelOrder(node0));
-       // System.err.println(Solution.levelOrder(invertTree(node0)));
+        // System.err.println(Solution.levelOrder(invertTree(node0)));
     }
 }

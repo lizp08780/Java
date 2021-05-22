@@ -9,8 +9,7 @@ import java.util.Map;
 public class Solution13 {
 
     public static void main(String[] args) {
-        System.err.println(String.format("%04s","a"));
-        //System.err.println(gcd(5, 3));
+        System.err.println(String.format("%04s", "a"));
     }
 
     public int MoreThanHalfNum_Solution(int[] array) {

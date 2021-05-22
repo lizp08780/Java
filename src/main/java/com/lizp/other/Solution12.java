@@ -1,7 +1,7 @@
 package com.lizp.other;
 
 /**
- *
+ * 最大公约数
  */
 public class Solution12 {
 

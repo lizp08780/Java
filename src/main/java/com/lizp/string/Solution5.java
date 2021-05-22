@@ -5,7 +5,7 @@ package com.lizp.string;
  * <p>
  * 给定字符串A以及它的长度n，请返回最长回文子串的长度。
  */
-public class Solution33 {
+public class Solution5 {
     public static int getLongestPalindrome(String A, int n) {
         // write code here
         boolean[][] dp = new boolean[n][n];
