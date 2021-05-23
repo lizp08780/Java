@@ -1,7 +1,7 @@
 package com.lizp.tree;
 
 public class TreeNode {
-    int val = 0;
+    int val;
     TreeNode left;
     TreeNode right;
 

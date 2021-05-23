@@ -41,14 +41,36 @@ public class Solution5 {
         return result.next;
     }
 
+    /**
+     * 删除给出链表中的重复元素（链表中元素从小到大有序），使链表中的所有元素都只出现一次
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode deleteDuplicates2(ListNode head) {
+        ListNode result = new ListNode(-1);
+        result.next = head;
+        ListNode pre = result;
+        while (head != null) {
+            if (head.val == pre.val) {
+                pre.next = head.next;
+            } else {
+                pre = head;
+            }
+            head = head.next;
+        }
+        System.err.println(result);
+        return result.next;
+    }
+
     public static void main(String[] args) {
         ListNode node7 = new ListNode(7);
         ListNode node6 = new ListNode(7, node7);
-        ListNode node5 = new ListNode(5, node6);
+        ListNode node5 = new ListNode(7, node6);
         ListNode node4 = new ListNode(3, node5);
         ListNode node3 = new ListNode(3, node4);
-        ListNode node2 = new ListNode(2, node3);
+        ListNode node2 = new ListNode(3, node3);
         ListNode node1 = new ListNode(1, node2);
-        deleteDuplicates(node1);
+        deleteDuplicates2(node1);
     }
 }

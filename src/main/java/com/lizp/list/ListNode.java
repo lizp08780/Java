@@ -15,6 +15,12 @@ public class ListNode {
 
     @Override
     public String toString() {
-        return val + "\n" + (next != null ? next.toString() : "");
+        ListNode p = this;
+        StringBuilder sb = new StringBuilder();
+        while (p != null) {
+            sb.append(p.val).append("->");
+            p = p.next;
+        }
+        return sb.toString();
     }
 }

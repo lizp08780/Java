@@ -1,6 +1,13 @@
 package com.lizp.list;
 
 public class Solution4 {
+    /**
+     * 删除链表的倒数第N个节点
+     *
+     * @param head
+     * @param n
+     * @return
+     */
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null || n < 1) {
             return head;
@@ -31,6 +38,6 @@ public class Solution4 {
         ListNode node3 = new ListNode(3, node4);
         ListNode node2 = new ListNode(2, node3);
         ListNode node1 = new ListNode(1, node2);
-        removeNthFromEnd(node7, 1);
+        System.err.println(removeNthFromEnd(node1, 2));
     }
 }
